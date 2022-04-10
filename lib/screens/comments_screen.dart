@@ -30,7 +30,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
         profilePic,
       );
 
-      if (res != 'success') {
+      if (res != 'Sucesso.') {
         showSnackBar(context, res);
       }
       setState(() {
@@ -52,7 +52,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
       appBar: AppBar(
         backgroundColor: mobileBackgroundColor,
         title: const Text(
-          'Comments',
+          'Comentários',
         ),
         centerTitle: false,
       ),
@@ -97,7 +97,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                   child: TextField(
                     controller: commentEditingController,
                     decoration: InputDecoration(
-                      hintText: 'Comment as ${user.username}',
+                      hintText: 'Comentar como ${user.username}',
                       border: InputBorder.none,
                     ),
                   ),
@@ -113,7 +113,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                   padding:
                       const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                   child: const Text(
-                    'Post',
+                    'Postar',
                     style: TextStyle(color: Colors.blue),
                   ),
                 ),

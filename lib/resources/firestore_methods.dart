@@ -11,7 +11,7 @@ class FireStoreMethods {
   Future<String> uploadPost(String description, Uint8List file, String uid,
       String username, String profImage) async {
     // asking uid here because we dont want to make extra calls to firebase auth when we can just get from our state management
-    String res = "Some error occurred";
+    String res = "Algum erro ocorreu.";
     try {
       String photoUrl =
           await StorageMethods().uploadImageToStorage('posts', file, true);
@@ -27,7 +27,7 @@ class FireStoreMethods {
         profImage: profImage,
       );
       _firestore.collection('posts').doc(postId).set(post.toJson());
-      res = "success";
+      res = "Sucesso.";
     } catch (err) {
       res = err.toString();
     }
@@ -35,7 +35,7 @@ class FireStoreMethods {
   }
 
   Future<String> likePost(String postId, String uid, List likes) async {
-    String res = "Some error occurred";
+    String res = "Algum erro ocorreu.";
     try {
       if (likes.contains(uid)) {
         // if the likes list contains the user uid, we need to remove it
@@ -48,7 +48,7 @@ class FireStoreMethods {
           'likes': FieldValue.arrayUnion([uid])
         });
       }
-      res = 'success';
+      res = 'Sucesso.';
     } catch (err) {
       res = err.toString();
     }
@@ -58,7 +58,7 @@ class FireStoreMethods {
   // Post comment
   Future<String> postComment(String postId, String text, String uid,
       String name, String profilePic) async {
-    String res = "Some error occurred";
+    String res = "Algum erro ocorreu.";
     try {
       if (text.isNotEmpty) {
         // if the likes list contains the user uid, we need to remove it
@@ -76,9 +76,9 @@ class FireStoreMethods {
           'commentId': commentId,
           'datePublished': DateTime.now(),
         });
-        res = 'success';
+        res = 'Sucesso.';
       } else {
-        res = "Please enter text";
+        res = "Por favor informe uma entrada.";
       }
     } catch (err) {
       res = err.toString();
@@ -88,10 +88,10 @@ class FireStoreMethods {
 
   // Delete Post
   Future<String> deletePost(String postId) async {
-    String res = "Some error occurred";
+    String res = "Algum erro ocorreu.";
     try {
       await _firestore.collection('posts').doc(postId).delete();
-      res = 'success';
+      res = 'Sucesso.';
     } catch (err) {
       res = err.toString();
     }

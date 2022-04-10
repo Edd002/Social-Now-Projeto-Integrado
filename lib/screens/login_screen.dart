@@ -35,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
     });
     String res = await AuthMethods().loginUser(
         email: _emailController.text, password: _passwordController.text);
-    if (res == 'success') {
+    if (res == 'Sucesso.') {
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
             builder: (context) => const ResponsiveLayout(
@@ -75,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 flex: 2,
               ),
               SvgPicture.asset(
-                'assets/ic_instagram.svg',
+                'assets/ic_social.svg',
                 color: primaryColor,
                 height: 64,
               ),
@@ -83,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 64,
               ),
               TextFieldInput(
-                hintText: 'Enter your email',
+                hintText: 'Informe seu email',
                 textInputType: TextInputType.emailAddress,
                 textEditingController: _emailController,
               ),
@@ -91,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 24,
               ),
               TextFieldInput(
-                hintText: 'Enter your password',
+                hintText: 'Informe sua senha',
                 textInputType: TextInputType.text,
                 textEditingController: _passwordController,
                 isPass: true,
@@ -103,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Container(
                   child: !_isLoading
                       ? const Text(
-                          'Log in',
+                          'Logar',
                         )
                       : const CircularProgressIndicator(
                           color: primaryColor,
@@ -132,7 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Container(
                     child: const Text(
-                      'Dont have an account?',
+                      'Não possui uma conta?',
                     ),
                     padding: const EdgeInsets.symmetric(vertical: 8),
                   ),
@@ -144,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     child: Container(
                       child: const Text(
-                        ' Signup.',
+                        ' Registre-se.',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),

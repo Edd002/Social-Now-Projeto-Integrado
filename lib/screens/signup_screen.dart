@@ -8,7 +8,6 @@ import 'package:social_now_projeto_integrado/responsive/responsive_layout.dart';
 import 'package:social_now_projeto_integrado/responsive/web_screen_layout.dart';
 import 'package:social_now_projeto_integrado/screens/login_screen.dart';
 import 'package:social_now_projeto_integrado/utils/colors.dart';
-import 'package:social_now_projeto_integrado/utils/global_variable.dart';
 import 'package:social_now_projeto_integrado/utils/utils.dart';
 import 'package:social_now_projeto_integrado/widgets/text_field_input.dart';
 
@@ -49,7 +48,7 @@ class _SignupScreenState extends State<SignupScreen> {
         bio: _bioController.text,
         file: _image!);
     // if string returned is sucess, user has been created
-    if (res == "success") {
+    if (res == "Sucesso.") {
       setState(() {
         _isLoading = false;
       });
@@ -95,7 +94,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 flex: 2,
               ),
               SvgPicture.asset(
-                'assets/ic_instagram.svg',
+                'assets/ic_social.svg',
                 color: primaryColor,
                 height: 64,
               ),
@@ -130,7 +129,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: 24,
               ),
               TextFieldInput(
-                hintText: 'Enter your username',
+                hintText: 'Informe seu nome de usuário',
                 textInputType: TextInputType.text,
                 textEditingController: _usernameController,
               ),
@@ -138,7 +137,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: 24,
               ),
               TextFieldInput(
-                hintText: 'Enter your email',
+                hintText: 'Informe seu email',
                 textInputType: TextInputType.emailAddress,
                 textEditingController: _emailController,
               ),
@@ -146,7 +145,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: 24,
               ),
               TextFieldInput(
-                hintText: 'Enter your password',
+                hintText: 'Informe sua senha',
                 textInputType: TextInputType.text,
                 textEditingController: _passwordController,
                 isPass: true,
@@ -155,7 +154,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: 24,
               ),
               TextFieldInput(
-                hintText: 'Enter your bio',
+                hintText: 'Informe sua biográfia',
                 textInputType: TextInputType.text,
                 textEditingController: _bioController,
               ),
@@ -166,7 +165,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 child: Container(
                   child: !_isLoading
                       ? const Text(
-                          'Sign up',
+                          'Registrar',
                         )
                       : const CircularProgressIndicator(
                           color: primaryColor,
@@ -207,7 +206,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     child: Container(
                       child: const Text(
-                        ' Login.',
+                        ' Logar.',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),

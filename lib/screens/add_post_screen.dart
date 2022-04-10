@@ -25,11 +25,11 @@ class _AddPostScreenState extends State<AddPostScreen> {
       context: parentContext,
       builder: (BuildContext context) {
         return SimpleDialog(
-          title: const Text('Create a Post'),
+          title: const Text('Criar uma Postagem'),
           children: <Widget>[
             SimpleDialogOption(
                 padding: const EdgeInsets.all(20),
-                child: const Text('Take a photo'),
+                child: const Text('Tirar uma foto'),
                 onPressed: () async {
                   Navigator.pop(context);
                   Uint8List file = await pickImage(ImageSource.camera);
@@ -39,7 +39,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                 }),
             SimpleDialogOption(
                 padding: const EdgeInsets.all(20),
-                child: const Text('Choose from Gallery'),
+                child: const Text('Escolher da Galeria'),
                 onPressed: () async {
                   Navigator.of(context).pop();
                   Uint8List file = await pickImage(ImageSource.gallery);
@@ -49,7 +49,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                 }),
             SimpleDialogOption(
               padding: const EdgeInsets.all(20),
-              child: const Text("Cancel"),
+              child: const Text("Cancelar"),
               onPressed: () {
                 Navigator.pop(context);
               },
@@ -74,13 +74,13 @@ class _AddPostScreenState extends State<AddPostScreen> {
         username,
         profImage,
       );
-      if (res == "success") {
+      if (res == "Sucesso.") {
         setState(() {
           isLoading = false;
         });
         showSnackBar(
           context,
-          'Posted!',
+          'Postado!',
         );
         clearImage();
       } else {
@@ -130,7 +130,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                 onPressed: clearImage,
               ),
               title: const Text(
-                'Post to',
+                'Postar para',
               ),
               centerTitle: false,
               actions: <Widget>[
@@ -141,7 +141,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                     userProvider.getUser.photoUrl,
                   ),
                   child: const Text(
-                    "Post",
+                    "Postar",
                     style: TextStyle(
                         color: Colors.blueAccent,
                         fontWeight: FontWeight.bold,
@@ -171,7 +171,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                       child: TextField(
                         controller: _descriptionController,
                         decoration: const InputDecoration(
-                            hintText: "Write a caption...",
+                            hintText: "Escreva uma legenda...",
                             border: InputBorder.none),
                         maxLines: 8,
                       ),

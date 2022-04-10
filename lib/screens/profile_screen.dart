@@ -115,7 +115,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     FirebaseAuth.instance.currentUser!.uid ==
                                             widget.uid
                                         ? FollowButton(
-                                            text: 'Sign Out',
+                                            text: 'Sair',
                                             backgroundColor:
                                                 mobileBackgroundColor,
                                             textColor: primaryColor,
@@ -133,7 +133,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           )
                                         : isFollowing
                                             ? FollowButton(
-                                                text: 'Unfollow',
+                                                text: 'Deixar de seguir',
                                                 backgroundColor: Colors.white,
                                                 textColor: Colors.black,
                                                 borderColor: Colors.grey,
@@ -152,7 +152,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 },
                                               )
                                             : FollowButton(
-                                                text: 'Follow',
+                                                text: 'Seguir',
                                                 backgroundColor: Colors.blue,
                                                 textColor: Colors.white,
                                                 borderColor: Colors.blue,
