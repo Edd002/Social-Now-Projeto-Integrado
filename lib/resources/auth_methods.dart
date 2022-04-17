@@ -8,7 +8,7 @@ class AuthMethods {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  // get user details
+  // Obter detalhes do usuário
   Future<model.User> getUserDetails() async {
     User currentUser = _auth.currentUser!;
 
@@ -18,14 +18,13 @@ class AuthMethods {
     return model.User.fromSnap(documentSnapshot);
   }
 
-  // Signing Up User
-
+  // Registrar User
   Future<String> signUpUser({
     required String email,
     required String password,
     required String username,
     required String bio,
-    required Uint8List file,
+    required Uint8List? file,
   }) async {
     String res = "Algum erro ocorreu.";
     try {
@@ -34,14 +33,14 @@ class AuthMethods {
           username.isNotEmpty ||
           bio.isNotEmpty ||
           file != null) {
-        // registering user in auth with email and password
+        // Registrando usuário em auth com e-mail e senha
         UserCredential cred = await _auth.createUserWithEmailAndPassword(
           email: email,
           password: password,
         );
 
-        String photoUrl =
-            await StorageMethods().uploadImageToStorage('profilePics', file, false);
+        String photoUrl = await StorageMethods()
+            .uploadImageToStorage('profilePics', file!, false);
 
         model.User _user = model.User(
           username: username,
@@ -53,7 +52,7 @@ class AuthMethods {
           following: [],
         );
 
-        // adding user in our database
+        // Adicionando usuário em nosso banco de dados
         await _firestore
             .collection("users")
             .doc(cred.user!.uid)
@@ -69,7 +68,7 @@ class AuthMethods {
     return res;
   }
 
-  // logging in user
+  // Usuário de login
   Future<String> loginUser({
     required String email,
     required String password,
@@ -77,7 +76,7 @@ class AuthMethods {
     String res = "Algum erro ocorreu.";
     try {
       if (email.isNotEmpty || password.isNotEmpty) {
-        // logging in user with email and password
+        // Logando usuário com e-mail e senha
         await _auth.signInWithEmailAndPassword(
           email: email,
           password: password,

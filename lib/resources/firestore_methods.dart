@@ -10,12 +10,12 @@ class FireStoreMethods {
 
   Future<String> uploadPost(String description, Uint8List file, String uid,
       String username, String profImage) async {
-    // asking uid here because we dont want to make extra calls to firebase auth when we can just get from our state management
+    // Perguntando uid aqui porque não queremos fazer chamadas extras para a autenticação do Firebase quando podemos apenas obter do nosso gerenciamento de estado
     String res = "Algum erro ocorreu.";
     try {
       String photoUrl =
           await StorageMethods().uploadImageToStorage('posts', file, true);
-      String postId = const Uuid().v1(); // creates unique id based on time
+      String postId = const Uuid().v1(); // Cria id exclusivo com base no tempo
       Post post = Post(
         description: description,
         uid: uid,
@@ -38,12 +38,12 @@ class FireStoreMethods {
     String res = "Algum erro ocorreu.";
     try {
       if (likes.contains(uid)) {
-        // if the likes list contains the user uid, we need to remove it
+        // Se a lista de curtidas contém o uid do usuário, precisamos removê-lo
         _firestore.collection('posts').doc(postId).update({
           'likes': FieldValue.arrayRemove([uid])
         });
       } else {
-        // else we need to add uid to the likes array
+        // Caso contrário, precisamos adicionar uid ao array likes
         _firestore.collection('posts').doc(postId).update({
           'likes': FieldValue.arrayUnion([uid])
         });
@@ -55,13 +55,13 @@ class FireStoreMethods {
     return res;
   }
 
-  // Post comment
+  // Postar comentário
   Future<String> postComment(String postId, String text, String uid,
       String name, String profilePic) async {
     String res = "Algum erro ocorreu.";
     try {
       if (text.isNotEmpty) {
-        // if the likes list contains the user uid, we need to remove it
+        // Se a lista de curtidas contém o uid do usuário, precisamos removê-lo
         String commentId = const Uuid().v1();
         _firestore
             .collection('posts')
@@ -86,7 +86,7 @@ class FireStoreMethods {
     return res;
   }
 
-  // Delete Post
+  // Apague a postagem
   Future<String> deletePost(String postId) async {
     String res = "Algum erro ocorreu.";
     try {
@@ -98,15 +98,13 @@ class FireStoreMethods {
     return res;
   }
 
-  Future<void> followUser(
-    String uid,
-    String followId
-  ) async {
+  Future<void> followUser(String uid, String followId) async {
     try {
-      DocumentSnapshot snap = await _firestore.collection('users').doc(uid).get();
+      DocumentSnapshot snap =
+          await _firestore.collection('users').doc(uid).get();
       List following = (snap.data()! as dynamic)['following'];
 
-      if(following.contains(followId)) {
+      if (following.contains(followId)) {
         await _firestore.collection('users').doc(followId).update({
           'followers': FieldValue.arrayRemove([uid])
         });
@@ -123,8 +121,7 @@ class FireStoreMethods {
           'following': FieldValue.arrayUnion([followId])
         });
       }
-
-    } catch(e) {
+    } catch (e) {
       print(e.toString());
     }
   }

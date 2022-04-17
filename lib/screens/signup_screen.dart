@@ -35,24 +35,25 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   void signUpUser() async {
-    // set loading to true
+    // Definir loading como true
     setState(() {
       _isLoading = true;
     });
 
-    // signup user using our authmethodds
+    // Registrar usuário usando os implementados authmethodds
     String res = await AuthMethods().signUpUser(
         email: _emailController.text,
         password: _passwordController.text,
         username: _usernameController.text,
         bio: _bioController.text,
-        file: _image!);
-    // if string returned is sucess, user has been created
+        file: _image);
+
+    // Se a string retornada for sucesso, o usuário foi criado
     if (res == "Sucesso.") {
       setState(() {
         _isLoading = false;
       });
-      // navigate to the home screen
+      // Navegar até a tela inicial
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => const ResponsiveLayout(
@@ -65,14 +66,14 @@ class _SignupScreenState extends State<SignupScreen> {
       setState(() {
         _isLoading = false;
       });
-      // show the error
+      // Mostrar o erro
       showSnackBar(context, res);
     }
   }
 
   selectImage() async {
     Uint8List im = await pickImage(ImageSource.gallery);
-    // set state because we need to display the image we selected on the circle avatar
+    // Atribuir o estado porque precisamos exibir a imagem que selecionamos no círculo do avatar
     setState(() {
       _image = im;
     });
@@ -194,7 +195,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 children: [
                   Container(
                     child: const Text(
-                      'Already have an account?',
+                      'Já possui uma conta?',
                     ),
                     padding: const EdgeInsets.symmetric(vertical: 8),
                   ),

@@ -66,7 +66,7 @@ class _PostCardState extends State<PostCard> {
     final width = MediaQuery.of(context).size.width;
 
     return Container(
-      // boundary needed for web
+      // Limite necessário para web
       decoration: BoxDecoration(
         border: Border.all(
           color: width > webScreenSize ? secondaryColor : mobileBackgroundColor,
@@ -78,7 +78,7 @@ class _PostCardState extends State<PostCard> {
       ),
       child: Column(
         children: [
-          // HEADER SECTION OF THE POST
+          // Seção do cabeçalho da postagem
           Container(
             padding: const EdgeInsets.symmetric(
               vertical: 4,
@@ -140,7 +140,7 @@ class _PostCardState extends State<PostCard> {
                                                   widget.snap['postId']
                                                       .toString(),
                                                 );
-                                                // remove the dialog box
+                                                // Remove the dialog box
                                                 Navigator.of(context).pop();
                                               }),
                                         )
@@ -155,7 +155,7 @@ class _PostCardState extends State<PostCard> {
               ],
             ),
           ),
-          // IMAGE SECTION OF THE POST
+          // Seção de imagem da postagem
           GestureDetector(
             onDoubleTap: () {
               FireStoreMethods().likePost(
@@ -201,7 +201,7 @@ class _PostCardState extends State<PostCard> {
               ],
             ),
           ),
-          // LIKE, COMMENT SECTION OF THE POST
+          // Curtidas, seção de comentários da postagem
           Row(
             children: <Widget>[
               LikeAnimation(
@@ -248,7 +248,7 @@ class _PostCardState extends State<PostCard> {
               ))
             ],
           ),
-          //DESCRIPTION AND NUMBER OF COMMENTS
+          // Descrição de número de comentários
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(

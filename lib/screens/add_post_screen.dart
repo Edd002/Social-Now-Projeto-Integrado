@@ -64,9 +64,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
     setState(() {
       isLoading = true;
     });
-    // start the loading
+    // Iniciar o carregamento
     try {
-      // upload to storage and db
+      // Upload para armazenamento e db
       String res = await FireStoreMethods().uploadPost(
         _descriptionController.text,
         _file!,
@@ -150,7 +150,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                 )
               ],
             ),
-            // POST FORM
+            // Postar Formulário
             body: Column(
               children: <Widget>[
                 isLoading

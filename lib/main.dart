@@ -13,16 +13,15 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // initialise app based on platform- web or mobile
+  // Inicializar o aplicativo com base na plataforma - web ou móvel
   if (kIsWeb) {
     await Firebase.initializeApp(
       options: const FirebaseOptions(
-        apiKey: "AIzaSyBGB32QyYbj8Qe3dbgmGqzj6UC9ydcgfOs", //ok
-        appId: "1:129479881013:ios:90acbe3ddf5154838c1c7c", //ok
-        messagingSenderId: "129479881013", //ok
-        projectId: "social-now-20cfd", //ok
-        storageBucket: 'social-now-20cfd.appspot.com' //ok
-      ),
+          apiKey: "AIzaSyBGB32QyYbj8Qe3dbgmGqzj6UC9ydcgfOs",
+          appId: "1:129479881013:ios:90acbe3ddf5154838c1c7c",
+          messagingSenderId: "129479881013",
+          projectId: "social-now-20cfd",
+          storageBucket: 'social-now-20cfd.appspot.com'),
     );
   } else {
     await Firebase.initializeApp();
@@ -37,7 +36,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => UserProvider(),),
+        ChangeNotifierProvider(
+          create: (_) => UserProvider(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -49,9 +50,9 @@ class MyApp extends StatelessWidget {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.active) {
-              // Checking if the snapshot has any data or not
+              // Verificando se o snapshot tem algum dado ou não
               if (snapshot.hasData) {
-                // if snapshot has data which means user is logged in then we check the width of screen and accordingly display the screen layout
+                // Se o snapshot tiver dados, o que significa que o usuário está conectado, verificamos a largura da tela e exibimos o layout da tela de acordo
                 return const ResponsiveLayout(
                   mobileScreenLayout: MobileScreenLayout(),
                   webScreenLayout: WebScreenLayout(),
@@ -63,7 +64,7 @@ class MyApp extends StatelessWidget {
               }
             }
 
-            // means connection to future hasnt been made yet
+            // Significa que a conexão com o futuro ainda não foi feita
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
                 child: CircularProgressIndicator(),
