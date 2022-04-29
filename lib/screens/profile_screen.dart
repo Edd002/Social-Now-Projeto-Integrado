@@ -103,9 +103,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    buildStatColumn(postLen, "posts"),
-                                    buildStatColumn(followers, "followers"),
-                                    buildStatColumn(following, "following"),
+                                    buildStatColumn(postLen, "postagens"),
+                                    buildStatColumn(followers, "seguidores"),
+                                    buildStatColumn(following, "seguindo"),
                                   ],
                                 ),
                                 Row(

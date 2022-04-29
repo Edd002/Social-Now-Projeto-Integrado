@@ -261,7 +261,7 @@ class _PostCardState extends State<PostCard> {
                         .subtitle2!
                         .copyWith(fontWeight: FontWeight.w800),
                     child: Text(
-                      '${widget.snap['likes'].length} likes',
+                      '${widget.snap['likes'].length} curtidas',
                       style: Theme.of(context).textTheme.bodyText2,
                     )),
                 Container(
@@ -289,7 +289,7 @@ class _PostCardState extends State<PostCard> {
                 InkWell(
                   child: Container(
                     child: Text(
-                      'View all $commentLen comments',
+                      (commentLen <= 0 ? 'Esta postagem não possui comentários' : (commentLen == 1 ? 'Visualizar comentário' : 'Visualizar todos os $commentLen comentários')),
                       style: const TextStyle(
                         fontSize: 16,
                         color: secondaryColor,
