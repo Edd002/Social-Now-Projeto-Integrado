@@ -124,7 +124,7 @@ class _PostCardState extends State<PostCard> {
                                         vertical: 16),
                                     shrinkWrap: true,
                                     children: [
-                                      'Delete',
+                                      'Deletar',
                                     ]
                                         .map(
                                           (e) => InkWell(
