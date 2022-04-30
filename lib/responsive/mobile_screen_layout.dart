@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:social_now_projeto_integrado/screens/profile_screen.dart';
 import 'package:social_now_projeto_integrado/utils/colors.dart';
 import 'package:social_now_projeto_integrado/utils/global_variable.dart';
 
@@ -32,8 +34,11 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
     });
   }
 
+  //Animating Page
   void navigationTapped(int page) {
-    //Animating Page
+    if (page == 4) {
+      homeScreenItems[4] = ProfileScreen(uid: FirebaseAuth.instance.currentUser!.uid);
+    }
     pageController.jumpToPage(page);
   }
 
