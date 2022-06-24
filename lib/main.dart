@@ -1,3 +1,4 @@
+import 'package:social_now_projeto_integrado/resources/firebase_config.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -17,11 +18,11 @@ void main() async {
   if (kIsWeb) {
     await Firebase.initializeApp(
       options: const FirebaseOptions(
-          apiKey: "AIzaSyBGB32QyYbj8Qe3dbgmGqzj6UC9ydcgfOs",
-          appId: "1:129479881013:ios:90acbe3ddf5154838c1c7c",
-          messagingSenderId: "129479881013",
-          projectId: "social-now-20cfd",
-          storageBucket: 'social-now-20cfd.appspot.com'),
+          apiKey: API_KEY,
+          appId: APP_ID,
+          messagingSenderId: MESSAGING_SENDER_ID,
+          projectId: PROJECT_ID,
+          storageBucket: STORAGE_BUCKET),
     );
   } else {
     await Firebase.initializeApp();
